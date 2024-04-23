@@ -4,22 +4,17 @@ services:
     build: ./api
     ports:
       - 3000:3000
-    environment:
-      - PORT=3000
-      - DB_HOST=db
-      - DB_USERNAME=root
-      - DB_PASSWORD=password
-      - DB_DATABASE=books
     depends_on:
       - db
+    env_file:
+      - .env
 
   db:
     build: ./db
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=books
     volumes:
       - db_data:/var/lib/mysql
+    env_file:
+      - .env
 
   nginx:
     build: ./nginx
