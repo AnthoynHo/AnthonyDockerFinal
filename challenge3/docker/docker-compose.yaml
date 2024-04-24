@@ -1,6 +1,6 @@
 version: '3'
 services:
-  api:
+  node-service:
     build: ./api
     ports:
       - 3000:3000
@@ -21,7 +21,7 @@ services:
     ports:
       - 8080:80
     depends_on:
-      - api
+      - node-service
 
 volumes:
   db_data:
